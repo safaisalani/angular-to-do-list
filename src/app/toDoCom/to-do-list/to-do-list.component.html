@@ -1,0 +1,10 @@
+
+<div>
+
+    <h4>Class ({{parentItem.student_class}})</h4>
+    <h2><input type="checkbox" (click) = "check(parentItem)">
+        <span [ngClass] = "{'strike': !parentItem.active}">Name : <small>{{parentItem.student_name}}</small> , Id : <small>{{parentItem.id}}</small></span></h2>
+    <button (click)="del(parentItem)">Delete</button>
+    
+</div>
+
