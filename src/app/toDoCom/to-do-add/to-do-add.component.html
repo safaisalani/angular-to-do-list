@@ -1,12 +1,21 @@
-<div>
-    <h1>ADD TO DO</h1>
+<div id="addItemContainer">
+    <h3 class="subheading">ADD TO DO</h3>
     <form (ngSubmit)="AddElement()">
-        <label for="name">Name</label>
-        <input type="text" id ="name" name="name" [(ngModel)]="name ">
-        <label for="id">id</label>
-        <input type="text" id ="id" name="id" [(ngModel)]="id">
-        <label for="class">class</label>
-        <input type="text" id ="class" name="class" [(ngModel)]="class">
+        <div>
+            <label for="name"  class="lablela1">Name</label>
+            <input type="text" id ="name" name="name" [(ngModel)]="name ">
+        </div>
+<div>
+    <label for="id"  class="lablela1">id</label>
+    <input type="text" id ="id" name="id" [(ngModel)]="id">
+</div>
+
+<div>
+
+    <label for="class" class="lablela1">class</label>
+    <input type="text" id ="class" name="class" [(ngModel)]="class">
+   
+</div>
         <button type="submit">Add</button>
     </form>
 </div>

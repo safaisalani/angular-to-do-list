@@ -1,5 +1,7 @@
-
+<div id="main">
+    
 <addToDo (addEvent)="addElement($event)"></addToDo>
+
 <div *ngIf="this.todoElements.length === 0  else elseBlock">
     <div>no thing added</div>
 
@@ -10,3 +12,5 @@
         <todoList [parentItem] = "item" (delEvent)="delItem($event)" (checkEvent)="checked($event)"></todoList>
     </div>
 </ng-template>
+
+</div>
