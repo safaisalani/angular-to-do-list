@@ -8,8 +8,8 @@
 </div>
 <ng-template #elseBlock>
     <div class="msgDataList">Your List of Stundents Task</div>
-    <div *ngFor="let item of todoElements">
-        <todoList [parentItem] = "item" (delEvent)="delItem($event)" (checkEvent)="checked($event)" (newData)="newUpdateData($event)" (update)="updateData($event)"></todoList>
+    <div *ngFor="let item of todoElements;let i = index;">
+        <todoList [parentItem] = "item" [sno] = "i" (delEvent)="delItem($event)" (checkEvent)="checked($event)" (newData)="newUpdateData($event)" (update)="updateData($event)"></todoList>
     </div>
 </ng-template>
 

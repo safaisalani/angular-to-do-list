@@ -1,14 +1,18 @@
 
 <div>
+  
 
-    <h4>Class ({{parentItem.student_class}})</h4>
+    <h4 class="subheading highLight" >Class ({{parentItem.student_class}})</h4>
+    <div>
+        <label for="Sno" >Sno :</label>
+        <span [innerHtml]="sno+1"></span>
+    
+    </div>
     <h2><input type="checkbox" (click) = "check(parentItem)">
-        <span [ngClass] = "{'strike': !parentItem.active}">
-            Name : <small>{{parentItem.student_name}}</small> ,
-            Id : <small>{{parentItem.id}}</small>, 
-            Task : <small>{{parentItem.task}}</small></span></h2>
+        <span [ngClass] = "{'strike': !parentItem.active}">{{parentItem.active === true ? 'Pending' : 'Completed'}}</span></h2>
 
             <form (ngSubmit)="updateElement(parentItem)">
+               
                 <div>
                     <label for="name" class="lablela1">Name</label>
                     <input type="text" id="name" name="name" [(ngModel)]="name" >
@@ -36,6 +40,7 @@
                     <button class="btna1" type="submit">Update</button>    <button class="btna1" (click)="del(parentItem)">Delete</button>
 
                 </div>
+
         
             </form>
 

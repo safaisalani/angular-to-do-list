@@ -26,3 +26,30 @@
     padding-bottom: 5px;
     border-radius: 5px/5px;
 }
+
+
+
+.item1{
+    grid-area: header;
+}
+.item2{
+    grid-area: contant;
+}
+.item3{
+    grid-area: sidebar;
+}
+
+.item4{
+    grid-area: footer;
+}
+
+.grid-containter{
+    display: grid;
+    grid-template-areas:
+    'header header header header'
+    'sidebar contant contant contant'
+    'footer footer footer footer'
+    ;
+    
+
+}

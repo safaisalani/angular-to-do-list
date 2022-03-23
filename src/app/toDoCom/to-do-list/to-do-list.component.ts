@@ -8,6 +8,7 @@ import { Todo } from '../Todo';
 })
 export class ToDoListComponent implements OnInit {
 @Input() parentItem: Todo;
+@Input() sno:any;
 @Output() delEvent: EventEmitter<Todo> = new EventEmitter()
 @Output() checkEvent: EventEmitter<Todo> = new EventEmitter()
 @Output() update: EventEmitter<Todo> = new EventEmitter()
@@ -19,6 +20,8 @@ id:number;
 name:string;
 task:string;
 newElement:Todo;
+active:boolean;
+index = 1;
 
 
 
