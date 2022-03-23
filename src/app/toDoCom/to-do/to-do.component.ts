@@ -42,4 +42,32 @@ export class ToDoComponent implements OnInit {
 
 
   }
+
+  newClas:string;
+  newName:string;
+  newId:number;
+  newTask:string;
+
+
+  newUpdateData(childTodo: Todo){
+    this.newClas = childTodo.student_class
+    this.newName = childTodo.student_name
+    this.newId = childTodo.id
+    this.newTask = childTodo.task
+
+  }
+
+  updateData(childTodo: Todo){
+    
+    const index = this.todoElements.indexOf(childTodo);
+  //  console.log(this.todoElements[index]);
+   
+    
+    this.todoElements[index].student_class = this.newClas;  
+    this.todoElements[index].student_name = this.newName; 
+    this.todoElements[index].id = this.newId; 
+    this.todoElements[index].task = this.newTask; 
+    localStorage.setItem("todoElements" , JSON.stringify(this.todoElements))
+
+  }
 }

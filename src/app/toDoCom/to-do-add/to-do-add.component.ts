@@ -13,6 +13,7 @@ export class ToDoAddComponent implements OnInit {
   name:string;
   class:string;
   id:number;
+  task:string;
   newElement: Todo;  
 
   constructor() { }
@@ -26,7 +27,8 @@ export class ToDoAddComponent implements OnInit {
       
         id: this.id,
         student_class: this.class,
-        student_name: this.class,
+        student_name: this.name,
+        task:this.task,
         active: true
     }
     this.addEvent.emit(this.newElement)

@@ -3,8 +3,42 @@
 
     <h4>Class ({{parentItem.student_class}})</h4>
     <h2><input type="checkbox" (click) = "check(parentItem)">
-        <span [ngClass] = "{'strike': !parentItem.active}">Name : <small>{{parentItem.student_name}}</small> , Id : <small>{{parentItem.id}}</small></span></h2>
-    <button (click)="del(parentItem)">Delete</button>
+        <span [ngClass] = "{'strike': !parentItem.active}">
+            Name : <small>{{parentItem.student_name}}</small> ,
+            Id : <small>{{parentItem.id}}</small>, 
+            Task : <small>{{parentItem.task}}</small></span></h2>
+
+            <form (ngSubmit)="updateElement(parentItem)">
+                <div>
+                    <label for="name" class="lablela1">Name</label>
+                    <input type="text" id="name" name="name" [(ngModel)]="name" >
+                </div>
+                <div>
+                    <label for="id" class="lablela1">Id</label>
+                    <input type="text" id="id" name="id" [(ngModel)]="id">
+                </div>
+        
+                <div>
+        
+                    <label for="class" class="lablela1">Class</label>
+                    <input type="text" id="class" name="class" [(ngModel)]="class">
+        
+                </div>
+                <div>
+        
+                    <label for="task" class="lablela1">Task</label>
+                    <textarea id="task" name="task" [(ngModel)]="task" style="width: 141px;
+                    height: 37px;"></textarea>
+        
+                </div>
+                <div class="btnContaoner">
+        
+                    <button class="btna1" type="submit">Update</button>    <button class="btna1" (click)="del(parentItem)">Delete</button>
+
+                </div>
+        
+            </form>
+
     
 </div>
 
