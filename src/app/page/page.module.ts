@@ -7,6 +7,7 @@ import { ReportComponent } from './report/report.component';
 import { ToDoModule } from '../toDoCom/todo.module';
 import { AboutComponent } from './about/about.component';
 import { AddPrintOutDataComponent } from './add-print-out-data/add-print-out-data.component';
+import { PrintreciptComponent } from './printrecipt/printrecipt.component';
 
 
 
@@ -15,7 +16,8 @@ import { AddPrintOutDataComponent } from './add-print-out-data/add-print-out-dat
     DashbordComponent,
     ReportComponent,
     AboutComponent,
-    AddPrintOutDataComponent
+    AddPrintOutDataComponent,
+    PrintreciptComponent
   ],
   imports: [
     CommonModule,
