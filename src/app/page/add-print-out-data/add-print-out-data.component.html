@@ -1,4 +1,323 @@
 <div class="main">
-    <div class="contant1">hi</div>
-    <div class="contant2">hi</div>
+    <div class="contant1">
+
+        <div class="fix">
+            <div>Print Language</div>
+            <div><select name="" id="">
+                    <option value="">English</option>
+                    <option value="">Tamil</option>
+                </select></div>
+
+            <div>
+                <table>
+                    <tr>
+                        <td>Header</td>
+                        <td>Footer</td>
+                    </tr>
+                    <tr>
+                        <td><input #header type="text" (keyup)="setHeaderText(header.value)" value="welcome"></td>
+                        <td><input #footer type="text" (keyup)="setFooterText(footer.value)"></td>
+                    </tr>
+                </table>
+            </div>
+            <div><input type="checkbox" (click)="AllowToSelectLogo()">Print Logo</div>
+
+            <div *ngIf="this.viewLogo">
+                <table>
+                    <tr>
+                        <td><input #ownicon type="checkbox" (click)="previewImg('../../../assets/img/OIP.jfif')"> Use branch logo
+                        </td>
+                        <td>
+                            <label for ="getFile" style="display:block;width:150px; height:60px;" class="inputImg"
+                       >
+                            </label>
+                            
+                            <input type="file" name="getFile" #imgr id="getFile"  style="display:none"  (change)="getFilePath(imgr,ownicon)" ></td>
+                            
+                            <!-- <button style="display:block;width:150px; height:60px;" class="inputImg"
+                            (click)="imgr.click() " >
+                        </button> -->
+                  
+                        <!-- <td><img class="selector" src="../../../assets/img/OIP.jfif" alt=""></td> -->
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <table>
+
+                    <tr>
+                        <td><input type="checkbox" checked (click)="showBranchName()">Branch Name</td>
+                        <td><input type="checkbox" checked (click)="showBranchAddress()">Branch Address</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" checked (click)="showBranchCon()">Branch contact details</td>
+                        <td><input type="checkbox" checked (click)="showTaxNo()">Tax Number</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="taxDetailCol()">Tax deatails for each product</td>
+                        <td><input type="checkbox" (click)="showTaxSummary()">Tax summary</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" checked (click)="showCustDetails()">Customer details</td>
+                        <td><input type="checkbox" (click)="showSalesType()">Sale order type</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showBillDateAndTime()">Bill date with time</td>
+                        <td><input type="checkbox" (click)="showTillName()">Till name</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showTable()">Table name</td>
+                        <td><input type="checkbox" (click)="showCapName()">Captain name</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showCashier()">Cashier name</td>
+                        <td><input type="checkbox" (click)="shortBillData()">Short bill number</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showItemsQty()">Total items and quantity</td>
+                        <td><input type="checkbox" (click)="productAddon()">Product addons</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showFSS()">Branch FSS details</td>
+                        <td><input type="checkbox" (click)="showProductNLine()">Product name in separate line</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showSku()">SKU code</td>
+                        <td><input type="checkbox" (click)="showHSN()">HSN/SAC code</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showDiscount()">Discount for each product</td>
+                        <td><input type="checkbox" (click)="showTotalSavings()">Total savings</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showPayMentSummary()">Payment summary</td>
+                        <td><input type="checkbox" (click)="showTerms()">Sale terms & conditions</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showOutstandingAmt()">Customer outstanding amount</td>
+                        <td><input type="checkbox" (click)="showCusLoyalty()">Customer loyalty point</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showBarcode()">Barcode</td>
+                        <td><input type="checkbox" (click)="showPrintTime()">Recepit Printed time</td>
+                    </tr>
+
+
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="contant2">
+        <div class="printPreview">
+            <h3 [innerHTML]="headerText"></h3>
+            <div *ngIf="this.ViewImagePreview">
+                <img [src]="previewImage" class="img" width="200px" alt="not">
+            </div>
+            <div class="section1">
+                <h3 *ngIf="this.branchName" [innerHTML]="printData.branchName"></h3>
+                <div *ngIf="this.branchAddress" [innerHTML]="printData.branchaddres"></div>
+                <div *ngIf="this.taxNo" [innerHTML]="printData.taxNumber"></div>
+                <div *ngIf="this.bankContact" [innerHTML]="printData.branchContactDetails"></div>
+            </div>
+
+            <div *ngIf="this.customerDetails" class="section2">
+
+                <div [innerHTML]="'customer : ' + printData.customer.cusName"></div>
+                <div [innerHTML]="printData.customer.cusAdress"></div>
+                <div [innerHTML]="printData.customer.cusTax"></div>
+                <div [innerHTML]="printData.customer.cusCon"></div>
+
+            </div>
+            <div *ngIf="this.captainName" [innerHTML]="'Captain Name : '+printData.captainName"></div>
+            <div *ngIf="this.sku" [innerHTML]="'SKU : '+printData.skuCode"></div>
+            <div *ngIf="this.hsn" [innerHTML]="'HSN : '+printData.hsnandsavCode"></div>
+            <h3 [innerHTML]="printData.invoiceNo">
+
+            </h3>
+            <div class="section3">
+
+                <table>
+                    <tr>
+                        <td *ngIf="this.billDateWithTime" [innerHTML]="printData.billDateAndTime"></td>
+                        <td *ngIf="this.saleType" [innerHTML]="printData.salesOrderType"></td>
+
+                    </tr>
+                    <tr>
+                        <td *ngIf="this.tillName" [innerHTML]="printData.tillName"></td>
+                        <td *ngIf="this.cashierName" [innerHTML]="printData.cashierName"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section4">
+                <table>
+                    <tr>
+                        <td>Description</td>
+                        <td *ngIf="this.taxCol">Tax%</td>
+                        <td>Price</td>
+                        <td>Qty</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <td [innerHTML]="printData.description.description[0]"></td>
+                        <td *ngIf="this.taxCol" [innerHTML]="printData.description.tax[0]"></td>
+                        <td [innerHTML]="printData.description.price[0]"></td>
+                        <td [innerHTML]="printData.description.qty[0]"></td>
+                        <td [innerHTML]="printData.description.total[0]"></td>
+                    </tr>
+                    <tr>
+                        <td [innerHTML]="printData.description.description[0]"></td>
+                        <td *ngIf="this.taxCol" [innerHTML]="printData.description.tax[1]"></td>
+                        <td [innerHTML]="printData.description.price[2]"></td>
+                        <td [innerHTML]="printData.description.qty[3]"></td>
+                        <td [innerHTML]="printData.description.total[4]"></td>
+                    </tr>
+                    <tr>
+                        <td [innerHTML]="printData.description.description[0]"></td>
+                        <td *ngIf="this.taxCol" [innerHTML]="printData.description.tax[1]"></td>
+                        <td [innerHTML]="printData.description.price[2]"></td>
+                        <td [innerHTML]="printData.description.qty[3]"></td>
+                        <td [innerHTML]="printData.description.total[4]"></td>
+                    </tr>
+                    <tr>
+                        <td [innerHTML]="printData.description.description[0]"></td>
+                        <td *ngIf="this.taxCol" [innerHTML]="printData.description.tax[1]"></td>
+                        <td [innerHTML]="printData.description.price[2]"></td>
+                        <td [innerHTML]="printData.description.qty[3]"></td>
+                        <td [innerHTML]="printData.description.total[4]"></td>
+                    </tr>
+                    <tr>
+                        <td [innerHTML]="printData.description.description[0]"></td>
+                        <td *ngIf="this.taxCol" [innerHTML]="printData.description.tax[1]"></td>
+                        <td [innerHTML]="printData.description.price[2]"></td>
+                        <td [innerHTML]="printData.description.qty[3]"></td>
+                        <td [innerHTML]="printData.description.total[4]"></td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+            <div class="section5">
+                <table>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td [innerHTML]="printData.section.subtotal"></td>
+                    </tr>
+                    <tr>
+                        <td>Discount </td>
+                        <td [innerHTML]="printData.section.discount"></td>
+                    </tr>
+                    <tr>
+                        <td>Product Charges</td>
+                        <td [innerHTML]="printData.section.product"></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery charge </td>
+                        <td [innerHTML]="printData.section.delivery"></td>
+                    </tr>
+                    <tr>
+                        <td>Round Off</td>
+                        <td [innerHTML]="printData.section.roundOff"></td>
+                    </tr>
+                    <tr>
+                        <td>Total </td>
+                        <td [innerHTML]="printData.section.total"></td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+            <div *ngIf="this.taxSummary" class="section6">
+                <p><u>Tax Summary</u></p>
+                <table>
+                    <tr>
+                        <td>
+                            Tax Name
+                        </td>
+                        <td>Tax%</td>
+                        <td>Taxable</td>
+                        <td>Tax Amt</td>
+                    </tr>
+                    <tr>
+                        <td [innerHTML]="printData.taxSummary[0].s1"></td>
+                        <td [innerHTML]="printData.taxSummary[0].s2"></td>
+                        <td [innerHTML]="printData.taxSummary[0].s3"></td>
+                        <td [innerHTML]="printData.taxSummary[0].s4"></td>
+                        <td [innerHTML]="printData.taxSummary[0].s5"></td>
+                    </tr>
+                    <tr>
+                        <td [innerHTML]="printData.taxSummary[1].s1"></td>
+                        <td [innerHTML]="printData.taxSummary[1].s2"></td>
+                        <td [innerHTML]="printData.taxSummary[1].s3"></td>
+                        <td [innerHTML]="printData.taxSummary[1].s4"></td>
+                        <td [innerHTML]="printData.taxSummary[1].s5"></td>
+                    </tr>
+
+                    <tr>
+                        <td [innerHTML]="printData.taxSummary[2].s1"></td>
+                        <td [innerHTML]="printData.taxSummary[2].s2"></td>
+                        <td [innerHTML]="printData.taxSummary[2].s3"></td>
+                        <td [innerHTML]="printData.taxSummary[2].s4"></td>
+                        <td [innerHTML]="printData.taxSummary[2].s5"></td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div *ngIf="this.totalItem" [innerHTML]="printData.totalItem"></div>
+            <div class="section8">
+                <div *ngIf="this.totalSavings" [innerHTML]="'Savings on purchase : '+printData.totalSavings"></div>
+                <div *ngIf="this.outStanding" [innerHTML]="'Outstanding Amount : '+printData.customerOutStandingAmount">
+                </div>
+
+            </div>
+
+
+            <div *ngIf="this.barcode">
+                <img src="../../../assets/img/OIa.jfif" class="barcode" width="300px" alt="not">
+            </div>
+
+
+
+
+            <div class="section9">
+                <div *ngIf="this.tableName" [innerHTML]="printData.tableName"></div>
+                <div *ngIf="this.barcode" [innerHTML]="printData.served"></div>
+                <div *ngIf="this.termsCon" [innerHTML]="printData.salesTermsAndConditions"></div>
+                <div *ngIf="this.fss" [innerHTML]="printData.branchFSS"></div>
+                <div *ngIf="this.paymentSummary" [innerHTML]="printData.paymentsummary"></div>
+            </div>
+
+            <br>
+
+            <div *ngIf="this.reciptTimePrint" [innerHTML]="'Printed On : '+printData.date"></div>
+
+            <hr style="line-break: normal;">
+            <h3 [innerHTML]="footerText"></h3>
+        </div>
+    </div>
+</div>
+
+<div>
+    
 </div>

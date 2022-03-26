@@ -2,299 +2,520 @@
     <div class="contant1">
 
         <div class="fix">
-            <div>Print Language</div>
-        <div><select name="" id="">
-                <option value="">English</option>
-                <option value="">Tamil</option>
-            </select></div>
-
-        <div>
-            <table>
-                <tr>
-                    <td>Header</td>
-                    <td>Footer</td>
-                </tr>
-                <tr>
-                    <td><input #header type="text" (keyup) = "setHeaderText(header.value)" value="welcome"></td>
-                    <td><input #footer type="text" (keyup) = "setFooterText(footer.value)" ></td>
-                </tr>
-            </table>
-        </div>
-        <div><input type="checkbox" (click)="AllowToSelectLogo()">Print Logo</div>
-
-        <div  *ngIf="this.viewLogo">
-            <table>
-                <tr>
-                    <td><input type="checkbox" (click) = "previewImg('../../../assets/img/OIP.jfif')"> Use branch logo</td>
-                    <td><img class="selector" src="../../../assets/img/OIP.jfif" alt=""></td>
-                </tr>
-            </table>
-        </div>
-
-        <div>
-            <table>
-
-                <tr>
-                    <td><input type="checkbox" checked>Branch Name</td>
-                    <td><input type="checkbox">Branch Address</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Branch contact details</td>
-                    <td><input type="checkbox">Tax Number</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Tax deatails for each product</td>
-                    <td><input type="checkbox">Tax summary</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Customer details</td>
-                    <td><input type="checkbox">Sale order type</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Bill date with time</td>
-                    <td><input type="checkbox">Till name</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Table name</td>
-                    <td><input type="checkbox">Captain name</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Cashier name</td>
-                    <td><input type="checkbox">Short bill number</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Total items and quantity</td>
-                    <td><input type="checkbox">Product addons</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Branch FSS details</td>
-                    <td><input type="checkbox">Product name in separate line</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">SKU code</td>
-                    <td><input type="checkbox">HSN/SAC code</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Discount for each product</td>
-                    <td><input type="checkbox">Total savings</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Payment summary</td>
-                    <td><input type="checkbox">Sale terms & conditions</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Customer outstanding amount</td>
-                    <td><input type="checkbox">Customer loyalty point</td>
-                </tr>
-
-                <tr>
-                    <td><input type="checkbox">Barcode</td>
-                    <td><input type="checkbox">Recepit Printed time</td>
-                </tr>
-
-
-            </table>
-        </div>
-        </div>
-        
-
-
-    </div>
-    <div class="contant2">
-        <div class="printPreview">
-            <h3  [innerHTML]="headerText"></h3>
-            <div  *ngIf="this.ViewImagePreview">
-                <img [src] = "previewImage" class="img" width="200px" alt="not">
-            </div>
-            <div class="section1">
-                <h3  *ngIf="this.branchName" [innerHTML]="printData.branchName"></h3>
-                <div [innerHTML]="printData.branchaddres"></div>
-                <div [innerHTML]="printData.taxNumber"></div>
-                <div [innerHTML]="printData.branchContactDetails"></div>
-            </div>
-
-            <div class="section2">
-
-                <div [innerHTML]="'customer : ' + printData.customer.cusName"></div>
-                <div [innerHTML]="printData.customer.cusAdress"></div>
-                <div [innerHTML]="printData.customer.cusTax"></div>
-                <div [innerHTML]="printData.customer.cusCon"></div>
-
-            </div>
-            <h3 [innerHTML]="printData.invoiceNo">
-
-            </h3>
-            <div class="section3">
-               
-                <table>
-                    <tr>
-                        <td [innerHTML]="printData.billDateAndTime"></td>
-                        <td [innerHTML]="printData.salesOrderType"></td>
-
-                    </tr>
-                    <tr>
-                        <td [innerHTML]="printData.tillName"></td>
-                        <td [innerHTML]="printData.cashierName"></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="section4">
-                <table>
-                    <tr>
-                        <td>Description</td>
-                        <td>Tax%</td>
-                        <td>Price</td>
-                        <td>Qty</td>
-                        <td>Total</td>
-                    </tr>
-                    <tr>
-                        <td [innerHTML]="printData.description.description[0]"></td>
-                        <td [innerHTML]="printData.description.tax[0]"></td>
-                        <td [innerHTML]="printData.description.price[0]"></td>
-                        <td [innerHTML]="printData.description.qty[0]"></td>
-                        <td [innerHTML]="printData.description.total[0]"></td>
-                    </tr>
-                    <tr>
-                        <td [innerHTML]="printData.description.description[0]"></td>
-                        <td [innerHTML]="printData.description.tax[1]"></td>
-                        <td [innerHTML]="printData.description.price[2]"></td>
-                        <td [innerHTML]="printData.description.qty[3]"></td>
-                        <td [innerHTML]="printData.description.total[4]"></td>                    </tr>
-                    <tr>
-                        <td [innerHTML]="printData.description.description[0]"></td>
-                        <td [innerHTML]="printData.description.tax[1]"></td>
-                        <td [innerHTML]="printData.description.price[2]"></td>
-                        <td [innerHTML]="printData.description.qty[3]"></td>
-                        <td [innerHTML]="printData.description.total[4]"></td>                    </tr>
-                    <tr>
-                        <td [innerHTML]="printData.description.description[0]"></td>
-                        <td [innerHTML]="printData.description.tax[1]"></td>
-                        <td [innerHTML]="printData.description.price[2]"></td>
-                        <td [innerHTML]="printData.description.qty[3]"></td>
-                        <td [innerHTML]="printData.description.total[4]"></td>                    </tr>
-                    <tr>
-                        <td [innerHTML]="printData.description.description[0]"></td>
-                        <td [innerHTML]="printData.description.tax[1]"></td>
-                        <td [innerHTML]="printData.description.price[2]"></td>
-                        <td [innerHTML]="printData.description.qty[3]"></td>
-                        <td [innerHTML]="printData.description.total[4]"></td>                    </tr>
-                </table>
-            </div>
-
-
-
-
-            <div class="section5">
-                <table>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td  [innerHTML]="printData.section.subtotal"></td>
-                    </tr>
-                    <tr>
-                        <td>Discount </td>
-                        <td  [innerHTML]="printData.section.discount"></td>
-                    </tr>
-                    <tr>
-                        <td>Product Charges</td>
-                        <td  [innerHTML]="printData.section.product"></td>
-                    </tr>
-                    <tr>
-                        <td>Delivery charge </td>
-                        <td  [innerHTML]="printData.section.delivery"></td>
-                    </tr>
-                    <tr>
-                        <td>Round Off</td>
-                        <td  [innerHTML]="printData.section.roundOff"></td>
-                    </tr>
-                    <tr>
-                        <td>Total </td>
-                        <td  [innerHTML]="printData.section.total"></td>
-                    </tr>
-                </table>
-            </div>
-
-
-
-            <div class = "section6">
-<p><u>Tax Summary</u></p>
-<table>
-    <tr>
-        <td>
-            Tax Name
-        </td>
-        <td>Tax%</td>
-        <td>Taxable</td>
-        <td>Tax Amt</td>
-    </tr>
-    <tr>
-        <td [innerHTML]="printData.taxSummary[0].s1"></td>
-        <td [innerHTML]="printData.taxSummary[0].s2"></td>
-        <td [innerHTML]="printData.taxSummary[0].s3"></td>
-        <td [innerHTML]="printData.taxSummary[0].s4"></td>
-        <td [innerHTML]="printData.taxSummary[0].s5"></td>
-    </tr>
-    <tr>
-        <td [innerHTML]="printData.taxSummary[1].s1"></td>
-        <td [innerHTML]="printData.taxSummary[1].s2"></td>
-        <td [innerHTML]="printData.taxSummary[1].s3"></td>
-        <td [innerHTML]="printData.taxSummary[1].s4"></td>
-        <td [innerHTML]="printData.taxSummary[1].s5"></td>
-    </tr>
-
-    <tr>
-        <td [innerHTML]="printData.taxSummary[2].s1"></td>
-        <td [innerHTML]="printData.taxSummary[2].s2"></td>
-        <td [innerHTML]="printData.taxSummary[2].s3"></td>
-        <td [innerHTML]="printData.taxSummary[2].s4"></td>
-        <td [innerHTML]="printData.taxSummary[2].s5"></td>
-    </tr>
-    
-</table>
-
-</div>
-<div [innerHTML]="printData.totalItem"></div>
-<div class = "section8">
-    <div [innerHTML]="'Savings on purchase : '+printData.totalSavings"></div>
-    <div [innerHTML]="'Outstanding Amount : '+printData.customerOutStandingAmount"></div>
-    
-</div>
-
+            <div [innerHtml]="'Print Language'"></div>
+            <div><select name="" id="">
+                    <option value="">English</option>   
+                    <option value="">Tamil</option>
+                </select></div>
 
             <div>
-                <img src="../../../assets/img/OIa.jfif" class="barcode" width="300px" alt="not">
+                <table>
+                    <tr>
+                        <td>Header</td>
+                        <td>Footer</td>
+                    </tr>
+                    <tr>
+                        <td><input #header type="text" (keyup)="setHeaderText(header.value)" value="welcome"></td>
+                        <td><input #footer type="text" (keyup)="setFooterText(footer.value)"></td>
+                    </tr>
+                </table>
+            </div>
+            <div><input type="checkbox" (click)="AllowToSelectLogo()">Print Logo</div>
+
+            <div *ngIf="this.viewLogo">
+                <table>
+                    <tr>
+                        <td><input #ownicon type="checkbox" (click)="previewImg(img)"> Use
+                            branch logo
+                        </td>
+                        <td>
+                            <label for="getFile" style="display:block;width:150px; height:60px;" class="inputImg">
+                            </label>
+
+                            <input type="file" name="getFile" #imgr id="getFile" style="display:none"
+                                (change)="getFilePath(imgr,ownicon)">
+                        </td>
+
+                    </tr>
+                </table>
             </div>
 
+            <div>
+                <table>
+
+                    <tr>
+                        <td><input type="checkbox" checked [(ngModel)]="branchName">Branch Name</td>
+                        <td><input type="checkbox" checked [(ngModel)]="branchAddress">Branch Address</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" checked [(ngModel)]="bankContact">Branch contact details</td>
+                        <td><input type="checkbox" checked [(ngModel)]="taxNo">Tax Number</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" [(ngModel)]="taxCol">Tax deatails for each product</td>
+                        <td><input type="checkbox" [(ngModel)]="taxSummary">Tax summary</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" [(ngModel)]="customerDetail" checked>Customer details</td>
+                        <td><input type="checkbox" [(ngModel)]="saleType">Sale order type</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" [(ngModel)] = "billDateWithTime">Bill date with time</td>
+                        <td><input type="checkbox" [(ngModel)] = "tillName">Till name</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" [(ngModel)] = "tableName">Table name</td>
+                        <td><input type="checkbox" [(ngModel)] = "captainName">Captain name</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" [(ngModel)] = "cashierName">Cashier name</td>
+                        <td><input type="checkbox" (click)="shortBillData()">Short bill number</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" [(ngModel)] = "totalItem">Total items and quantity</td>
+                        <td><input type="checkbox" [(ngModel)] = "productAddOn">Product addons</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" [(ngModel)]="fss">Branch FSS details</td>
+                        <td><input type="checkbox" [(ngModel)] = "singleLine">Product name in separate line</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showSku()">SKU code</td>
+                        <td><input type="checkbox" (click)="showHSN()">HSN/SAC code</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showDiscount()">Discount for each product</td>
+                        <td><input type="checkbox" (click)="showTotalSavings()">Total savings</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showPayMentSummary()">Payment summary</td>
+                        <td><input type="checkbox" (click)="showTerms()">Sale terms & conditions</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showOutstandingAmt()">Customer outstanding amount</td>
+                        <td><input type="checkbox" (click)="showCusLoyalty()">Customer loyalty point</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" (click)="showBarcode()">Barcode</td>
+                        <td><input type="checkbox" (click)="showPrintTime()">Recepit Printed time</td>
+                    </tr>
 
 
-
-            <div class="section9">
-                <div [innerHTML]="printData.tableName"></div>
-                <div [innerHTML]="printData.served"></div>
-                <div [innerHTML]="printData.salesTermsAndConditions"></div>
-                <div [innerHTML]="printData.tableName"></div>
-                <div [innerHTML]="printData.branchFSS"></div>
-                <div [innerHTML]="printData.paymentsummary"></div>
+                </table>
             </div>
-            
-<br>
-
-            <div [innerHTML]="'Printed On : '+printData.date"></div>
-           
-            <hr style="line-break: normal;">
-            <h3  [innerHTML]="footerText"></h3>
         </div>
+
+
+
     </div>
+
+
+    <div class="contant2">
+
+        <div id="sale-invoice-receipt-print">
+            <div style="width:100%;">
+
+                <p *ngIf="headerText" class="text-center" [innerHTML]="headerText || ''"></p>
+
+                <div *ngIf="ViewImagePreview" class="text-center">
+                    <img style="max-width: 100%;max-height: 100%;" [src]="previewImage" />
+                </div>
+
+                <p class="primary-label" *ngIf="branchName" [innerHTML]="dataForPrint.Branch_Name "></p>
+                <div>
+
+                    
+
+                    <p *ngIf="this.branchAddress" [innerHTML]="printData.branchaddres"></p>
+
+
+
+                 
+                    <p *ngIf="taxNo">
+                        <span [innerHTML]="'Tax No'"></span>
+                        <span class="colon-space">:</span>
+                        <span [innerHTML]="printData.taxNumber"></span>
+                    </p>
+
+                    <p *ngIf="bankContact">
+                        <span  [innerHtml]="printData.branchContactNo"></span>
+                        <span  class="colon-space">-</span>
+                        <span  [innerHtml]="printData.branchContactEmail"></span>
+                      </p>
+                       
+          
+                </div>
+
+                <div class="border-style" [innerHTML]="dividerLine"></div>
+               
+                <div *ngIf="customerDetail">
+
+                    
+                    <p class="text-left">
+                        <span [innerHTML]="'Customer'"></span>
+                        <span class="colon-space">:</span>
+                        <span [innerHTML]="printData.customer.cusName"></span>
+                    </p>
+                    <p class="text-left">
+                        <span [innerHTML]="printData.customer.cusAdress"></span>
+                    </p>
+                    <p class="text-left">
+                        <span [innerHTML]="'Tax No'"></span>
+                        <span class="colon-space">:</span>
+                        <span [innerHTML]="printData.customer.cusTax"></span>
+                    </p>
+
+                    <p class="text-left">
+                        <span [innerHTML]="printData.customer.cusCon"></span>
+                      
+                    </p>
+
+                    <div class="border-style" [innerHTML]="dividerLine"></div>
+                </div>
+            
+               
+            
+
+                <div>
+                    <table>
+                        <tr>
+                            <td class="text-center" colspan="2">
+                                <span class="primary-label" [innerHTML]="printData.invoiceNo"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="white-space:nowrap;">
+                                <span *ngIf="this.billDateWithTime" [innerHTML]="printData.billDateAndTime">
+                                </span>
+                            </td>
+                            <td style="white-space:nowrap;text-align: right;">
+                                <span *ngIf="this.saleType" [innerHTML]="printData.salesOrderType"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div>
+                    <table>
+                        <tr>
+                            <td style="white-space:nowrap;" *ngIf="this.tillName">
+                                <span [innerHTML]="printData.tillName"></span>
+                            </td>
+                            <td style="text-align:right;white-space:nowrap;" *ngIf="this.cashierName">
+                                <span [innerHTML]="'Cashier'"></span>
+                                <span class="colon-space">:</span>
+                                <span [innerHTML]="printData.cashierName"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="border-style" [innerHTML]="dividerLine"></div>
+
+
+                <!--  -->
+                <div>
+                    <table [class.with-tax]="this.taxCol">
+                        <thead>
+                            <tr>
+                                <th style="max-width:40%;" class="text-left product-td">
+                                    <span [innerHTML]="'Description'"></span>
+                                </th>
+                                <th class="text-center" *ngIf="this.taxCol">
+                                    <span [innerHTML]="'Tax%'"></span>
+                                </th>
+                                <th class="text-center price-td">
+                                    <span [innerHTML]="'Price'"></span>
+                                </th>
+                                <th class="text-center quantity-td">
+                                    <span [innerHTML]="'Qty'"></span>
+                                </th>
+                                <th class="text-right total-td">
+                                    <span [innerHTML]="'Total'"></span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th [attr.colspan]="this.taxCol ? 5 : 4">
+                                    <div class="border-style" [innerHTML]="dividerLine"></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <ng-container *ngFor="let product of printData.description;">
+                                    <tr >
+                                        <td [attr.colspan]="taxCol ? 5 : 4">
+                                            <p class="text-left">
+                                                <ng-container
+                                                    *ngIf="sku">
+                                                    <span>SKU</span>
+                                                    <span style="margin: 0 2px;">:</span>
+                                                    <span [innerHTML]="printData.skuCode"
+                                                        style="margin-right: 8px;"></span>
+                                                </ng-container>
+                                                <ng-container
+                                                    *ngIf="hsn">
+                                                    <span>HSN</span>
+                                                    <span style="margin: 0 2px;">:</span>
+                                                    <span [innerHTML]="printData.hsnandsavCode"></span>
+                                                </ng-container>
+                                            </p>
+                                            <p *ngIf="singleLine" class="text-left"
+                                                [innerHTML]="product.description"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="product-name-tag"
+                                                [class.with-tax-column]="taxCol"
+                                                *ngIf="!singleLine"
+                                                [innerHTML]="product.description"></span>
+                                        </td>
+                                        <td class="text-center" *ngIf="taxCol"
+                                            [innerHTML]="product.tax || '0.00'"></td>
+                                        <td class="text-right">
+                                            <span [innerHTML]="product.price || '0.00'"></span>
+                                            <ng-container>
+                                                <span *ngIf="discountForEach " class="discount-amount"
+                                                    [innerHTML]="product.discount"></span>
+                                            </ng-container>
+                                        </td>
+                                        <td class="text-center" [innerHTML]="product.qty">
+                                        </td>
+                                        <td class="text-right" [innerHTML]="product.total || '0.00'">
+                                        </td>
+                                    </tr>
+                                    <ng-container>
+                                        <tr>
+                                            <td [attr.colspan]="taxCol ? 5 : 4">
+                                                
+                                                    <div class="modifiers-column">
+                                                        <span style="margin-right: 4px;">[</span>
+                                                        <ng-container
+                                                            *ngFor="let variant of dataForPrint.Sale_Invoice_Product_Variants;let j=index;">
+                                                            <span [innerHTML]="variant.Variant_Name || ''"></span>
+                                                            <span style="margin:0 4px;"
+                                                                *ngIf="(product.Sale_Invoice_Product_Variants?.length > (j+1))">/</span>
+                                                        </ng-container>
+                                                        <span style="margin-left: 4px;">]</span>
+                                                    </div>
+                                               
+                                                <ng-container *ngIf="productAddOn"
+                                                    >
+                                                    <ul class="modifiers-column"
+                                                        style="padding-left: 0; margin: 0 0 4px;">
+                                                        <li style="margin: 2px 0;"
+                                                            *ngFor="let addon of dataForPrint.Sale_Invoice_Product_Addons">
+                                                            <span [innerHTML]="'+ ' + addon.Addon_Name"></span>
+                                                        </li>
+                                                    </ul>
+                                                </ng-container>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </ng-container>
+                           
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <div class="border-style" [innerHTML]="dividerLine"></div>
+                        </td>
+                    </tr>
+                    <ng-container >
+                        <tr>
+                            <td [innerHTML]="'Subtotal'"></td>
+                            <td class="text-right" [innerHTML]="printData.section.subtotal"></td>
+                        </tr>
+                        <tr >
+                            <td [innerHTML]="'Discount'"></td>
+                            <td class="text-right"
+                                [innerHTML]="printData.section.discount">
+                            </td>
+                        </tr>
+                        <tr >
+                            <td [innerHTML]="'product'"></td>
+                            <td class="text-right"
+                                [innerHTML]="printData.section.product">
+                            </td>
+                        </tr>
+                        <ng-container >
+                            <tr >
+                                <td [innerHTML]="'delivery'"></td>
+                                <td class="text-right" [innerHTML]="printData.section.delivery"></td>
+                            </tr>
+                        </ng-container>
+
+                        <tr>
+                            <td [innerHTML]="'Round Off'"></td>
+                            <td class="text-right" [innerHTML]="printData.section.roundOff"></td>
+                        </tr>
+                    </ng-container>
+                    <tr>
+                        <td class="primary-label" [innerHTML]="'Total'"></td>
+                        <td class="primary-label text-right total-label"
+                            [innerHTML]="printData.section.total">
+                        </td>
+                    </tr>
+                </table>
+
+                
+                <ng-container
+                *ngIf="taxSummary">
+                <div class="border-style" [innerHTML]="dividerLine"></div>
+                <p>
+                  <u [innerHTML]="'Tax Summary'"></u>
+                </p>
+                <div>
+                  <table style="width: 100%;">
+                    <thead>
+                      <tr>
+                        <th style="text-align: left;">
+                          <span [innerHTML]="'Tax Name'"></span>
+                        </th>
+                        <th style="text-align: center;">
+                          <span [innerHTML]="'Tax %'"></span>
+                        </th>
+                        <th style="text-align: right;">
+                          <span [innerHTML]="'Taxable Amount'"></span>
+                        </th>
+                        <th style="text-align: right;">
+                          <span [innerHTML]="'Tax Amount'"></span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let tax of dataForPrint.Tax_Summary;">
+                        <td [innerHTML]="tax.Tax_Name || ''"></td>
+                        <td style="text-align: center;" [innerHTML]="tax.Tax_Percentage || '0.00'"></td>
+                        <td style="text-align: right;" [innerHTML]="tax.Taxable_Amount || '0.00'"></td>
+                        <td style="text-align: right;" [innerHTML]="tax.Tax_Amount || '0.00'"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </ng-container>
+
+                <ng-container *ngIf="totalItem">
+                <div class="border-style" [innerHTML]="dividerLine"> </div>
+                <div>
+                  <p>
+                    <span>
+                      <span [innerHTML]="'Total Items'"></span>
+                      <span style="margin:0 4px;">:</span>
+                      <span [innerHTML]="printData.totalItem"></span>
+                    </span>
+                    <span style="margin: 0 8px;">&</span>
+                    <span>
+                      <span [innerHTML]="'Total Quantity'"></span>
+                      <span style="margin:0 4px;">:</span>
+                      <span [innerHTML]="printData.totalQty"></span>
+                    </span>
+                  </p>
+                </div>
+              </ng-container>
+            
+            </div>
+
+
+            <div *ngIf="totalSavings">
+                <p class="text-left">
+                  <span [innerHTML]="printData.totalSavings"></span>
+                  <span style="margin:0 4px;">:</span>
+                  <span [innerHTML]="+printData.customerOutStandingAmount"></span>
+                </p>
+              </div>
+                <div
+                *ngIf="loyalty">
+                <p class="text-left">
+                  <span [innerHTML]="'Loyalty'"></span>
+                  <span style="margin:0 4px;">:</span>
+                  <td class="text-right" [innerHTML]="'# '+ printData.loyalty"></td>
+                </p>
+              </div>
+                <div
+                *ngIf="outStanding">
+                <p class="text-left">
+                  <span [innerHTML]="'Outstanding'"></span>
+                  <span style="margin:0 4px;">:</span>
+                  <span [innerHTML]="printData.customerOutStandingAmount"></span>
+                </p>
+              </div>
+                <ng-container *ngIf="barcode">
+                <div style="margin:0;padding:0;text-align:center;">
+                  <img style="max-width:100%; max-height:100%;" [src]="barcodeImg" />
+                </div>
+              </ng-container>
+
+                <div class="border-style" [innerHTML]="dividerLine"></div>
+                <div>
+                <p style="margin:0;padding:0;text-align:center;"
+                  *ngIf="tableName">
+                  <span [innerHTML]="' Name'"></span>
+                  <span style="margin: 0 4px;">:</span>
+                  <span [innerHTML]="printData.tableName"></span>
+                </p>
+                <p style="margin:0;padding:0;text-align:center;"
+                  *ngIf="captainName">
+                  <span [innerHTML]="'Served By'"></span>
+                  <span style="margin: 0 4px;">:</span>
+                  <span [innerHTML]="printData.served"></span>
+                </p>
+                <p style="margin:0;padding:0;text-align: center;"
+                  *ngIf="termsCon"
+                  [innerHTML]="printData.salesTermsAndConditions">
+                </p>
+                <p style="margin:0;padding:0;text-align: center;"
+                  *ngIf="fss">
+                  <span [innerHTML]="printData.branchFSS"></span>
+                  
+                </p>
+
+                <p *ngIf="footerText" class="text-center" [innerHTML]="footerText || ''"></p>
+                
+                <p style="margin:0;padding:0;text-align:center;font-weight:900;"
+                  *ngIf="reciptTimePrint">
+                  <span [innerHTML]="'Printed On'"></span>
+                  <span style="margin: 0 4px;">:</span>
+                  <span [innerHTML]="printData.date"></span>
+                </p>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
+
+<div>
+
 </div>
